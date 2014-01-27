@@ -1,6 +1,6 @@
 {
   "name": "default-browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get the default browser (OS X)",
   "license": "MIT",
   "bin": {
