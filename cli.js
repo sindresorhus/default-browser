@@ -15,5 +15,5 @@ defaultBrowser(function (err, data) {
 		throw err;
 	}
 
-	process.stdout.write(data.name);
+	console.log(data.name);
 });
