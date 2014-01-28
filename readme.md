@@ -15,8 +15,10 @@ npm install --save default-browser
 ```js
 var defaultBrowser = require('default-browser');
 
-defaultBrowser();
-//=> { name: 'Safari', id: 'com.apple.Safari' }
+defaultBrowser(function (err, browser) {
+	console.log(browser);
+	//=> { name: 'Safari', id: 'com.apple.Safari' }
+});
 ```
 
 
