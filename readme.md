@@ -1,16 +1,16 @@
-# default-browser [![Build Status](https://travis-ci.org/sindresorhus/default-browser.png?branch=master)](http://travis-ci.org/sindresorhus/default-browser)
+# default-browser [![Build Status](https://travis-ci.org/sindresorhus/default-browser.svg?branch=master)](https://travis-ci.org/sindresorhus/default-browser)
 
 > Get the default browser (OS X)
 
 
 ## Install
 
-```
-npm install --save default-browser
+```bash
+$ npm install --save default-browser
 ```
 
 
-## Example
+## Usage
 
 ```js
 var defaultBrowser = require('default-browser');
@@ -26,14 +26,14 @@ defaultBrowser(function (err, browser) {
 
 You can also use it as a CLI app by installing it globally:
 
-```
-npm install --global default-browser
+```bash
+$ npm install --global default-browser
 ```
 
 ### Usage
 
-```
-default-browser
+```bash
+$ default-browser
 ```
 
 Which will for example output `Safari`.
@@ -41,4 +41,4 @@ Which will for example output `Safari`.
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
