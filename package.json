@@ -1,6 +1,6 @@
 {
   "name": "default-browser",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Get the default browser (OS X)",
   "license": "MIT",
   "repository": "sindresorhus/default-browser",
