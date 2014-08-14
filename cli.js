@@ -1,13 +1,28 @@
 #!/usr/bin/env node
 'use strict';
-var defaultBrowser = require('./index');
+var pkg = require('./package.json');
+var defaultBrowser = require('./');
+var argv = process.argv.slice(2);
 
-if (process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
-	return console.log('Usage\n  default-browser\n\nExample output\n  Safari\n\nReturns the name of the default browser');
+function help() {
+	console.log([
+		'',
+		'  ' + pkg.description,
+		'',
+		'  Example',
+		'    default-browser',
+		'    Safari'
+	].join('\n'));
 }
 
-if (process.argv.indexOf('-v') !== -1 || process.argv.indexOf('--version') !== -1) {
-	return console.log(require('./package').version);
+if (argv.indexOf('--help') !== -1) {
+	help();
+	return;
+}
+
+if (argv.indexOf('--version') !== -1) {
+	console.log(pkg.version);
+	return;
 }
 
 defaultBrowser(function (err, data) {

@@ -3,14 +3,14 @@
   "version": "0.1.1",
   "description": "Get the default browser (OS X)",
   "license": "MIT",
-  "bin": {
-    "default-browser": "cli.js"
-  },
   "repository": "sindresorhus/default-browser",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
+  },
+  "bin": {
+    "default-browser": "cli.js"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -43,8 +43,8 @@
     "applescript"
   ],
   "dependencies": {
-    "bundle-name": "~0.1.0",
-    "default-browser-id": "~0.1.0"
+    "bundle-name": "^1.0.0",
+    "default-browser-id": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "*"

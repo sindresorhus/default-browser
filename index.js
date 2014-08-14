@@ -5,12 +5,14 @@ var bundleName = require('bundle-name');
 module.exports = function (cb) {
 	defaultBrowserId(function (err, id) {
 		if (err) {
-			return cb(err);
+			cb(err);
+			return;
 		}
 
 		bundleName(id, function (err, name) {
 			if (err) {
-				return cb(err);
+				cb(err);
+				return;
 			}
 
 			cb(null, {
