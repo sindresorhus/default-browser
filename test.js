@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('assert');
-var defaultBrowser = require('./index');
+var defaultBrowser = require('./');
 
 it('should return the default browser', function (cb) {
 	defaultBrowser(function (err, browser) {
