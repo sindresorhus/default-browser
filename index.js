@@ -8,6 +8,10 @@ module.exports = function (cb) {
 		return;
 	}
 
+	if (process.platform !== 'darwin') {
+		throw new Error('Only OS X and Linux systems are supported');
+	}
+
 	defaultBrowserId(function (err, id) {
 		if (err) {
 			cb(err);
