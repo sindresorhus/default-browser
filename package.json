@@ -43,6 +43,7 @@
   "dependencies": {
     "bundle-name": "^1.0.0",
     "default-browser-id": "^1.0.0",
+    "meow": "^3.1.0",
     "xdg-default-browser": "^1.0.0"
   },
   "devDependencies": {

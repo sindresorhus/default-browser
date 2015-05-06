@@ -29,7 +29,7 @@ $ npm install --global default-browser
 $ default-browser --help
 
   Example
-    default-browser
+    $ default-browser
     Safari
 ```
 
