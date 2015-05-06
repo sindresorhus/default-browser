@@ -28,6 +28,7 @@
   "keywords": [
     "osx",
     "mac",
+    "linux",
     "browser",
     "default",
     "plist",
@@ -44,7 +45,8 @@
   ],
   "dependencies": {
     "bundle-name": "^1.0.0",
-    "default-browser-id": "^1.0.0"
+    "default-browser-id": "^1.0.0",
+    "xdg-default-browser": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "*"
