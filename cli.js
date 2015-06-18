@@ -8,7 +8,7 @@ meow({
 		'Example',
 		'  $ default-browser',
 		'  Safari'
-	].join('\n')
+	]
 });
 
 defaultBrowser(function (err, data) {
