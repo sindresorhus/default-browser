@@ -14,7 +14,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "ava"
   },
   "files": [
     "index.js",
@@ -44,6 +44,6 @@
     "xdg-default-browser": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "ava": "*"
   }
 }
