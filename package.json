@@ -1,7 +1,7 @@
 {
   "name": "default-browser",
   "version": "1.0.0",
-  "description": "Get the default browser (OS X)",
+  "description": "Get the default browser",
   "license": "MIT",
   "repository": "sindresorhus/default-browser",
   "author": {
@@ -9,7 +9,6 @@
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
   },
-  "bin": "cli.js",
   "engines": {
     "node": ">=4"
   },
@@ -17,12 +16,9 @@
     "test": "xo && ava"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "index.js"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
     "osx",
     "linux",
     "browser",
@@ -40,7 +36,6 @@
   "dependencies": {
     "bundle-name": "^2.0.1",
     "default-browser-id": "^2.0.0",
-    "meow": "^3.3.0",
     "xdg-default-browser": "^2.0.0"
   },
   "devDependencies": {

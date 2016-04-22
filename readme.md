@@ -3,11 +3,14 @@
 > Get the default browser (OS X and Linux)
 
 
-## Usage
+## Install
 
-```sh
+```
 $ npm install --save default-browser
 ```
+
+
+## Usage
 
 ```js
 const defaultBrowser = require('default-browser');
@@ -19,19 +22,9 @@ defaultBrowser().then(browser => {
 ```
 
 
-## CLI
+## Related
 
-```sh
-$ npm install --global default-browser
-```
-
-```
-$ default-browser --help
-
-  Example
-    $ default-browser
-    Safari
-```
+- [default-browser-cli](https://github.com/sindresorhus/default-browser-cli) - CLI for this module
 
 
 ## License
