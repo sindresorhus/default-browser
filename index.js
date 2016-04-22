@@ -1,33 +1,15 @@
 'use strict';
-var defaultBrowserId = require('default-browser-id');
-var bundleName = require('bundle-name');
+const defaultBrowserId = require('default-browser-id');
+const bundleName = require('bundle-name');
 
-module.exports = function (cb) {
+module.exports = () => {
 	if (process.platform === 'linux') {
-		require('xdg-default-browser')(cb);
-		return;
+		return require('xdg-default-browser')();
 	}
 
 	if (process.platform !== 'darwin') {
 		throw new Error('Only OS X and Linux systems are supported');
 	}
 
-	defaultBrowserId(function (err, id) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		bundleName(id, function (err, name) {
-			if (err) {
-				cb(err);
-				return;
-			}
-
-			cb(null, {
-				name: name,
-				id: id
-			});
-		});
-	});
+	return defaultBrowserId().then(id => bundleName(id).then(name => ({name, id})));
 };
