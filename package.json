@@ -11,7 +11,7 @@
   },
   "bin": "cli.js",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "mocha"
@@ -38,10 +38,10 @@
     "applescript"
   ],
   "dependencies": {
-    "bundle-name": "^1.0.0",
-    "default-browser-id": "^1.0.0",
+    "bundle-name": "^2.0.1",
+    "default-browser-id": "^2.0.0",
     "meow": "^3.3.0",
-    "xdg-default-browser": "^1.0.0"
+    "xdg-default-browser": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "*"

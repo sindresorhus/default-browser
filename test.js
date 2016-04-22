@@ -2,10 +2,8 @@
 var assert = require('assert');
 var defaultBrowser = require('./');
 
-it('should return the default browser', function (cb) {
-	defaultBrowser(function (err, browser) {
-		console.log('Browser:', browser);
+it('should return the default browser', function () {
+	return defaultBrowser().then(function (browser) {
 		assert(/^com\./.test(browser.id));
-		cb();
 	});
 });
