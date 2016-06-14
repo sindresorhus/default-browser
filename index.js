@@ -8,7 +8,7 @@ module.exports = () => {
 	}
 
 	if (process.platform !== 'darwin') {
-		throw new Error('Only OS X and Linux are supported');
+		throw new Error('Only macOS and Linux are supported');
 	}
 
 	return defaultBrowserId().then(id => bundleName(id).then(name => ({name, id})));

@@ -1,6 +1,6 @@
 # default-browser [![Build Status](https://travis-ci.org/sindresorhus/default-browser.svg?branch=master)](https://travis-ci.org/sindresorhus/default-browser)
 
-> Get the default browser (OS X and Linux)
+> Get the default browser (macOS and Linux)
 
 
 ## Install
