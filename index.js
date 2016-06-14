@@ -7,9 +7,9 @@ module.exports = () => {
 		return require('xdg-default-browser')();
 	}
 
-	if (process.platform !== 'darwin') {
-		throw new Error('Only macOS and Linux are supported');
+	if (process.platform === 'darwin') {
+		return defaultBrowserId().then(id => bundleName(id).then(name => ({name, id})));
 	}
 
-	return defaultBrowserId().then(id => bundleName(id).then(name => ({name, id})));
+	return Promise.reject(new Error('Only macOS and Linux are supported'));
 };
