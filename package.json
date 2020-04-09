@@ -13,10 +13,11 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava && tsd"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "keywords": [
     "macos",
@@ -41,8 +42,10 @@
   },
   "devDependencies": {
     "ava": "*",
+    "tsd": "^0.11.0",
     "xo": "*"
   },
+  "types": "./index.d.ts",
   "xo": {
     "esnext": true
   }
