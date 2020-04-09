@@ -27,9 +27,7 @@ module.exports = _execa =>
 		'/v',
 		'ProgId'
 	]).then(result => {
-		if (result.failed) {
-			throw result;
-    }
+		// Execa@0.10 throws if the command fails--no need to check `result.failed`
 
 		const match = /ProgId\s*REG_SZ\s*(\S+)/.exec(result.stdout);
 		if (!match) {

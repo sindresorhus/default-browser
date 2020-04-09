@@ -37,7 +37,7 @@
   "dependencies": {
     "bundle-name": "^2.0.1",
     "default-browser-id": "^2.0.0",
-    "execa": "^4.0.0",
+    "execa": "^0.10.0",
     "xdg-default-browser": "^2.1.0"
   },
   "devDependencies": {
