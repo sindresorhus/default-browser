@@ -1,6 +1,7 @@
 'use strict';
 const defaultBrowserId = require('default-browser-id');
 const bundleName = require('bundle-name');
+const windows = require('./windows');
 
 module.exports = () => {
 	if (process.platform === 'linux') {
@@ -11,5 +12,9 @@ module.exports = () => {
 		return defaultBrowserId().then(id => bundleName(id).then(name => ({name, id})));
 	}
 
-	return Promise.reject(new Error('Only macOS and Linux are supported'));
+	if (process.platform === 'win32') {
+		return windows();
+	}
+
+	return Promise.reject(new Error('Only macOS, Windows, and Linux are supported'));
 };
