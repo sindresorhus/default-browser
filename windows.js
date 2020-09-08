@@ -20,26 +20,27 @@ function UnknownBrowserError(message) {
 
 util.inherits(UnknownBrowserError, Error);
 
-module.exports = _execa =>
-	(_execa || execa)('reg', [
+module.exports = async (_execa = execa) => {
+	const result = await _execa('reg', [
 		'QUERY',
 		' HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice',
 		'/v',
 		'ProgId'
-	]).then(result => {
-		// Execa@0.10 throws if the command fails--no need to check `result.failed`
+	]);
 
-		const match = /ProgId\s*REG_SZ\s*(\S+)/.exec(result.stdout);
-		if (!match) {
-			throw new UnknownBrowserError(`Cannot find windows browser in stdout: ${JSON.stringify(result.stdout)}`);
-		}
+	// Execa@0.10 throws if the command fails--no need to check `result.failed`
 
-		const browser = windowsBrowserProgIds[match[1]];
-		if (!browser) {
-			throw new UnknownBrowserError(`Unknown browser ID ${JSON.stringify(browser)}`);
-		}
+	const match = /ProgId\s*REG_SZ\s*(\S+)/.exec(result.stdout);
+	if (!match) {
+		throw new UnknownBrowserError(`Cannot find windows browser in stdout: ${JSON.stringify(result.stdout)}`);
+	}
 
-		return browser;
-	});
+	const browser = windowsBrowserProgIds[match[1]];
+	if (!browser) {
+		throw new UnknownBrowserError(`Unknown browser ID ${JSON.stringify(browser)}`);
+	}
+
+	return browser;
+};
 
 module.exports.UnknownBrowserError = UnknownBrowserError;
