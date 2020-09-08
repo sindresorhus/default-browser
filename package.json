@@ -45,7 +45,6 @@
     "tsd": "^0.11.0",
     "xo": "*"
   },
-  "types": "./index.d.ts",
   "xo": {
     "esnext": true
   }
