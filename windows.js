@@ -1,24 +1,18 @@
 'use strict';
 const execa = require('execa');
-const util = require('util');
 
-// Windows doesn't have browser IDs in the same way OSX/Linux does--give fake
-// ones that look real and match the OSX/Linux versions for cross-platform apps.
+// Windows doesn't have browser IDs in the same way macOS/Linux does--give fake
+// ones that look real and match the macOS/Linux versions for cross-platform apps.
 const windowsBrowserProgIds = {
 	AppXq0fevzme2pys62n3e0fbqa7peapykr8v: {name: 'Edge', id: 'com.microsoft.edge.old'},
-	MSEdgeDHTML: {name: 'Edge', id: 'com.microsoft.edge'}, // On OSX, its "com.microsoft.edgemac"
+	MSEdgeDHTML: {name: 'Edge', id: 'com.microsoft.edge'}, // On macOS, it's "com.microsoft.edgemac"
+	MSEdgeHTM: {name: 'Edge', id: 'com.microsoft.edge'}, // Newer Edge/Win10 releases
 	'IE.HTTP': {name: 'Internet Explorer', id: 'com.microsoft.ie'},
 	FirefoxURL: {name: 'Firefox', id: 'org.mozilla.firefox'},
 	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'}
 };
 
-function UnknownBrowserError(message) {
-	Error.captureStackTrace(this, UnknownBrowserError);
-	this.name = this.constructor.name;
-	this.message = message;
-}
-
-util.inherits(UnknownBrowserError, Error);
+class UnknownBrowserError extends Error {}
 
 module.exports = async (_execa = execa) => {
 	const result = await _execa('reg', [
