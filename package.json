@@ -13,11 +13,12 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava && tsd"
   },
   "files": [
     "index.js",
-    "windows.js"
+    "windows.js",
+    "index.d.ts"
   ],
   "keywords": [
     "macos",
@@ -38,12 +39,13 @@
   "dependencies": {
     "bundle-name": "^2.0.1",
     "default-browser-id": "^2.0.0",
-    "execa": "^0.10.0",
+    "execa": "^5.0.0",
     "xdg-default-browser": "^2.1.0"
   },
   "devDependencies": {
-    "ava": "*",
-    "xo": "*"
+    "ava": "^3.15.0",
+    "tsd": "^0.14.0",
+    "xo": "^0.37.1"
   },
   "xo": {
     "esnext": true,
