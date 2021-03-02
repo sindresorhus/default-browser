@@ -22,14 +22,12 @@ module.exports = async (_execa = execa) => {
 		'ProgId'
 	]);
 
-	// Execa@0.10 throws if the command fails--no need to check `result.failed`
-
-	const match = /ProgId\s*REG_SZ\s*(\S+)/.exec(result.stdout);
+	const match = /ProgId\s*REG_SZ\s*(?<id>\S+)/.exec(result.stdout);
 	if (!match) {
-		throw new UnknownBrowserError(`Cannot find windows browser in stdout: ${JSON.stringify(result.stdout)}`);
+		throw new UnknownBrowserError(`Cannot find Windows browser in stdout: ${JSON.stringify(result.stdout)}`);
 	}
 
-	const browser = windowsBrowserProgIds[match[1]];
+	const browser = windowsBrowserProgIds[match.groups.id];
 	if (!browser) {
 		throw new UnknownBrowserError(`Unknown browser ID ${JSON.stringify(browser)}`);
 	}
