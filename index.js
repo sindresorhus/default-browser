@@ -1,9 +1,8 @@
-'use strict';
-const defaultBrowserId = require('default-browser-id');
-const bundleName = require('bundle-name');
-const windows = require('./windows');
+import defaultBrowserId from 'default-browser-id';
+import bundleName from 'bundle-name';
+import windows from './windows.js';
 
-module.exports = async () => {
+export default async function defaultBrowser() {
 	if (process.platform === 'linux') {
 		return require('xdg-default-browser')();
 	}
@@ -18,5 +17,5 @@ module.exports = async () => {
 		return windows();
 	}
 
-	throw new Error('Only macOS, Windows, and Linux are supported');
-};
+	throw new Error('Only macOS, Linux, and Windows are supported');
+}

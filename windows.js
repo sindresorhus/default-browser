@@ -1,7 +1,6 @@
-'use strict';
-const execa = require('execa');
+import execa from 'execa';
 
-// Windows doesn't have browser IDs in the same way macOS/Linux does--give fake
+// Windows doesn't have browser IDs in the same way macOS/Linux does so we give fake
 // ones that look real and match the macOS/Linux versions for cross-platform apps.
 const windowsBrowserProgIds = {
 	AppXq0fevzme2pys62n3e0fbqa7peapykr8v: {name: 'Edge', id: 'com.microsoft.edge.old'},
@@ -12,9 +11,9 @@ const windowsBrowserProgIds = {
 	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'}
 };
 
-class UnknownBrowserError extends Error {}
+export class UnknownBrowserError extends Error {}
 
-module.exports = async (_execa = execa) => {
+export default async function defaultBrowser(_execa = execa) {
 	const result = await _execa('reg', [
 		'QUERY',
 		' HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice',
@@ -33,6 +32,4 @@ module.exports = async (_execa = execa) => {
 	}
 
 	return browser;
-};
-
-module.exports.UnknownBrowserError = UnknownBrowserError;
+}

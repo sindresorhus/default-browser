@@ -1,9 +1,9 @@
-const test = require('ava');
-const m = require('.');
-const windows = require('./windows');
+import test from 'ava';
+import defaultBrowser from './index.js';
+import windows, {UnknownBrowserError} from './windows.js';
 
 test('sane', async t => {
-	t.regex((await m()).id, /^(com|org)\./);
+	t.regex((await defaultBrowser()).id, /^(com|org)\./);
 });
 
 test('windows parsing', async t => {
@@ -44,7 +44,7 @@ test('windows parsing', async t => {
 		try {
 			actual = await windows(async () => ({stdout: testCase.output}));
 		} catch (error) {
-			if (!(error instanceof windows.UnknownBrowserError)) {
+			if (!(error instanceof UnknownBrowserError)) {
 				throw error;
 			}
 		}
