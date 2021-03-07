@@ -7,16 +7,17 @@
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+    "url": "https://sindresorhus.com"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=12"
   },
   "scripts": {
     "test": "xo && ava && tsd"
   },
   "files": [
     "index.js",
+    "windows.js",
     "index.d.ts"
   ],
   "keywords": [
@@ -38,14 +39,23 @@
   "dependencies": {
     "bundle-name": "^2.0.1",
     "default-browser-id": "^2.0.0",
-    "xdg-default-browser": "^2.0.0"
+    "execa": "^5.0.0",
+    "xdg-default-browser": "^2.1.0"
   },
   "devDependencies": {
-    "ava": "*",
-    "tsd": "^0.11.0",
-    "xo": "*"
+    "ava": "^3.15.0",
+    "tsd": "^0.14.0",
+    "xo": "^0.37.1"
   },
   "xo": {
-    "esnext": true
+    "esnext": true,
+    "overrides": [
+      {
+        "files": "test.js",
+        "rules": {
+          "node/no-unsupported-features/es-syntax": 0
+        }
+      }
+    ]
   }
 }
