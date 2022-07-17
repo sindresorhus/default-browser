@@ -26,9 +26,11 @@ export default async function defaultBrowser(_execa = execa) {
 		throw new UnknownBrowserError(`Cannot find Windows browser in stdout: ${JSON.stringify(result.stdout)}`);
 	}
 
-	const browser = windowsBrowserProgIds[match.groups.id];
+	const {id} = match.groups;
+
+	const browser = windowsBrowserProgIds[id];
 	if (!browser) {
-		throw new UnknownBrowserError(`Unknown browser ID ${JSON.stringify(browser)}`);
+		throw new UnknownBrowserError(`Unknown browser ID: ${id}`);
 	}
 
 	return browser;
