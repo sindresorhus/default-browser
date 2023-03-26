@@ -1,4 +1,4 @@
-export interface Browser {
+export type Browser = {
 	/**
 	Human-readadable name of the browser.
 	*/
@@ -11,7 +11,7 @@ export interface Browser {
 	- On Windows, it's an invented ID as Windows doesn't have IDs.
 	*/
 	id: string;
-}
+};
 
 /**
 Get the default browser for the current platform.

@@ -1,4 +1,4 @@
 import {expectType} from 'tsd';
-import defaultBrowser, {Browser} from './index.js';
+import defaultBrowser, {type Browser} from './index.js';
 
 expectType<Promise<Browser>>(defaultBrowser());

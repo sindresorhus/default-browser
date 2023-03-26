@@ -6,8 +6,8 @@ Works on macOS, Linux, and Windows.
 
 ## Install
 
-```
-$ npm install default-browser
+```sh
+npm install default-browser
 ```
 
 ## Usage

@@ -1,4 +1,4 @@
-import execa from 'execa';
+import {execa} from 'execa';
 
 // Windows doesn't have browser IDs in the same way macOS/Linux does so we give fake
 // ones that look real and match the macOS/Linux versions for cross-platform apps.
@@ -8,7 +8,7 @@ const windowsBrowserProgIds = {
 	MSEdgeHTM: {name: 'Edge', id: 'com.microsoft.edge'}, // Newer Edge/Win10 releases
 	'IE.HTTP': {name: 'Internet Explorer', id: 'com.microsoft.ie'},
 	FirefoxURL: {name: 'Firefox', id: 'org.mozilla.firefox'},
-	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'}
+	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'},
 };
 
 export class UnknownBrowserError extends Error {}
@@ -18,7 +18,7 @@ export default async function defaultBrowser(_execa = execa) {
 		'QUERY',
 		' HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice',
 		'/v',
-		'ProgId'
+		'ProgId',
 	]);
 
 	const match = /ProgId\s*REG_SZ\s*(?<id>\S+)/.exec(result.stdout);
