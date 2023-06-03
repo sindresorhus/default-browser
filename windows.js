@@ -9,6 +9,7 @@ const windowsBrowserProgIds = {
 	'IE.HTTP': {name: 'Internet Explorer', id: 'com.microsoft.ie'},
 	FirefoxURL: {name: 'Firefox', id: 'org.mozilla.firefox'},
 	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'},
+	Opera: {name: 'Opera', id: 'com.opera.browser'},
 };
 
 export class UnknownBrowserError extends Error {}
