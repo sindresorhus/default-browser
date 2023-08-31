@@ -11,17 +11,20 @@
 		"url": "https://sindresorhus.com"
 	},
 	"type": "module",
-	"exports": "./index.js",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
 	"engines": {
-		"node": ">=14.16"
+		"node": ">=18"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
 	},
 	"files": [
 		"index.js",
-		"windows.js",
-		"index.d.ts"
+		"index.d.ts",
+		"windows.js"
 	],
 	"keywords": [
 		"macos",
@@ -39,14 +42,14 @@
 		"applescript"
 	],
 	"dependencies": {
-		"bundle-name": "^3.0.0",
-		"default-browser-id": "^3.0.0",
-		"execa": "^7.1.1",
-		"titleize": "^3.0.0"
+		"bundle-name": "^4.0.0",
+		"default-browser-id": "^4.0.0",
+		"execa": "^8.0.1",
+		"titleize": "^4.0.0"
 	},
 	"devDependencies": {
-		"ava": "^5.2.0",
-		"tsd": "^0.28.0",
-		"xo": "^0.53.1"
+		"ava": "^5.3.1",
+		"tsd": "^0.29.0",
+		"xo": "^0.56.0"
 	}
 }
