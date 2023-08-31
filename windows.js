@@ -10,6 +10,8 @@ const windowsBrowserProgIds = {
 	FirefoxURL: {name: 'Firefox', id: 'org.mozilla.firefox'},
 	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'},
 	BraveHTML: {name: 'Brave', id: 'com.brave.browser'},
+	BraveSSHTM: {name: 'Brave Nightly', id: 'com.brave.browser.nightly'},
+	BraveBHTML: {name: 'Brave Beta', id: 'com.brave.browser.beta'},
 };
 
 export class UnknownBrowserError extends Error {}

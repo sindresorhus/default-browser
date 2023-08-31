@@ -34,6 +34,14 @@ test('windows parsing', async t => {
 			expected: 'com.brave.browser',
 		},
 		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    BraveSSHTM\r\n\r\n',
+			expected: 'com.brave.browser.nightly',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    BraveBHTML\r\n\r\n',
+			expected: 'com.brave.browser.beta',
+		},
+		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    Potato\r\n\r\n',
 			expected: undefined,
 		},
