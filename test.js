@@ -4,6 +4,7 @@ import defaultBrowser from './index.js';
 
 test('sane', async t => {
 	const {id} = await defaultBrowser();
+	console.log('Default browser', id);
 	t.regex(id, /^(com|org)\./);
 });
 

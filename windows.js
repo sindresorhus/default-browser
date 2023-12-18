@@ -1,4 +1,7 @@
-import {execa} from 'execa';
+import {promisify} from 'node:util';
+import {execFile} from 'node:child_process';
+
+const execFileAsync = promisify(execFile);
 
 // Windows doesn't have browser IDs in the same way macOS/Linux does so we give fake
 // ones that look real and match the macOS/Linux versions for cross-platform apps.
@@ -16,17 +19,17 @@ const windowsBrowserProgIds = {
 
 export class UnknownBrowserError extends Error {}
 
-export default async function defaultBrowser(_execa = execa) {
-	const result = await _execa('reg', [
+export default async function defaultBrowser(_execFileAsync = execFileAsync) {
+	const {stdout} = await _execFileAsync('reg', [
 		'QUERY',
 		' HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice',
 		'/v',
 		'ProgId',
 	]);
 
-	const match = /ProgId\s*REG_SZ\s*(?<id>\S+)/.exec(result.stdout);
+	const match = /ProgId\s*REG_SZ\s*(?<id>\S+)/.exec(stdout);
 	if (!match) {
-		throw new UnknownBrowserError(`Cannot find Windows browser in stdout: ${JSON.stringify(result.stdout)}`);
+		throw new UnknownBrowserError(`Cannot find Windows browser in stdout: ${JSON.stringify(stdout)}`);
 	}
 
 	const {id} = match.groups;
