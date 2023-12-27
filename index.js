@@ -19,12 +19,9 @@ export default async function defaultBrowser() {
 
 	if (process.platform === 'linux') {
 		const {stdout} = await execFileAsync('xdg-mime', ['query', 'default', 'x-scheme-handler/http']);
-		const name = titleize(stdout.trim().replace(/.desktop$/, '').replace('-', ' '));
-
-		return {
-			name,
-			id: stdout,
-		};
+		const id = stdout.trim();
+		const name = titleize(id.replace(/.desktop$/, '').replace('-', ' '));
+		return {name, id};
 	}
 
 	if (process.platform === 'win32') {
