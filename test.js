@@ -43,6 +43,22 @@ test('windows parsing', async t => {
 			expected: 'com.brave.Browser.beta',
 		},
 		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    Opera GXStable\r\n\r\n',
+			expected: 'com.operasoftware.operagx',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaStable\r\n\r\n',
+			expected: 'com.operasoftware.opera',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaNext\r\n\r\n',
+			expected: 'com.operasoftware.operanext',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaDeveloper\r\n\r\n',
+			expected: 'com.operasoftware.operadeveloper',
+		},
+		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    Potato\r\n\r\n',
 			expected: undefined,
 		},
