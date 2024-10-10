@@ -15,6 +15,7 @@ const windowsBrowserProgIds = {
 	BraveHTML: {name: 'Brave', id: 'com.brave.Browser'},
 	BraveBHTML: {name: 'Brave Beta', id: 'com.brave.Browser.beta'},
 	BraveSSHTM: {name: 'Brave Nightly', id: 'com.brave.Browser.nightly'},
+	OperaStable: {name: 'Opera', id: 'com.opera.browser'},
 };
 
 export class UnknownBrowserError extends Error {}
