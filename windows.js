@@ -15,6 +15,8 @@ const windowsBrowserProgIds = {
 	BraveHTML: {name: 'Brave', id: 'com.brave.Browser'},
 	BraveBHTML: {name: 'Brave Beta', id: 'com.brave.Browser.beta'},
 	BraveSSHTM: {name: 'Brave Nightly', id: 'com.brave.Browser.nightly'},
+	OperaStable: {name: 'Opera', id: 'com.opera.browser'},
+	'FirefoxURL\-([A-Z0-9]+)': {name: 'Firefox', id: 'org.mozilla.firefox'},
 };
 
 export class UnknownBrowserError extends Error {}
@@ -33,8 +35,38 @@ export default async function defaultBrowser(_execFileAsync = execFileAsync) {
 	}
 
 	const {id} = match.groups;
+	let browser = windowsBrowserProgIds[id];
 
-	const browser = windowsBrowserProgIds[id];
+	/* Check via Regular-Expressions */
+	if(!browser) {
+		try {
+			Object.keys(windowsBrowserProgIds).forEach((key) => {
+				let expression = new RegExp(key);
+
+				if(expression.test(id)) {
+					let matches = id.match(expression);
+					let additional = [];
+					browser = windowsBrowserProgIds[key];
+
+					if(matches.length > 1) {
+						matches.forEach((match, index) => {
+							if(index === 0) {
+								return;
+							}
+
+							additional.push(match);
+						});
+
+						/* Add additional informations */
+						browser.additional = additional;
+					}
+				}
+			});
+		} catch (e) {
+			/* Do Noting on Errors */
+		}
+	}
+
 	if (!browser) {
 		throw new UnknownBrowserError(`Unknown browser ID: ${id}`);
 	}
