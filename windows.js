@@ -15,8 +15,8 @@ const windowsBrowserProgIds = {
 	BraveHTML: {name: 'Brave', id: 'com.brave.Browser'},
 	BraveBHTML: {name: 'Brave Beta', id: 'com.brave.Browser.beta'},
 	BraveSSHTM: {name: 'Brave Nightly', id: 'com.brave.Browser.nightly'},
-	Opera: {name: 'Opera GX', id: 'com.operasoftware.operagx'},
-	OperaStable: {name: 'Opera', id: 'com.operasoftware.opera'},
+	'Opera GXStable': {name: 'Opera GX', id: 'com.opera.gx'},
+	OperaStable: {name: 'Opera', id: 'com.opera.Opera'},
 	OperaNext: {name: 'Opera Next', id: 'com.operasoftware.operanext'},
 	OperaDeveloper: {name: 'Opera Developer', id: 'com.operasoftware.operadeveloper'},
 };

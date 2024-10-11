@@ -44,11 +44,11 @@ test('windows parsing', async t => {
 		},
 		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    Opera GXStable\r\n\r\n',
-			expected: 'com.operasoftware.operagx',
+			expected: 'com.opera.gx',
 		},
 		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaStable\r\n\r\n',
-			expected: 'com.operasoftware.opera',
+			expected: 'com.opera.Opera',
 		},
 		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaNext\r\n\r\n',
