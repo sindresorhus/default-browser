@@ -31,7 +31,7 @@ export default async function defaultBrowser(_execFileAsync = execFileAsync) {
 		'ProgId',
 	]);
 
-	const match = /ProgId\s*REG_SZ\s*(?<id>\S+)/.exec(stdout);
+	const match = /ProgId\s*REG_SZ\s*(?<id>[^\r\n]+)/.exec(stdout);
 	if (!match) {
 		throw new UnknownBrowserError(`Cannot find Windows browser in stdout: ${JSON.stringify(stdout)}`);
 	}
