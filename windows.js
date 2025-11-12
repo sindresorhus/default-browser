@@ -9,6 +9,7 @@ const windowsBrowserProgIds = {
 	AppXq0fevzme2pys62n3e0fbqa7peapykr8v: {name: 'Edge', id: 'com.microsoft.edge.old'},
 	MSEdgeDHTML: {name: 'Edge', id: 'com.microsoft.edge'}, // On macOS, it's "com.microsoft.edgemac"
 	MSEdgeHTM: {name: 'Edge', id: 'com.microsoft.edge'}, // Newer Edge/Win10 releases
+	MSEdgeBHTML: {name: 'Edge Beta', id: 'com.microsoft.edge.beta'},
 	'IE.HTTP': {name: 'Internet Explorer', id: 'com.microsoft.ie'},
 	FirefoxURL: {name: 'Firefox', id: 'org.mozilla.firefox'},
 	ChromeHTML: {name: 'Chrome', id: 'com.google.chrome'},
