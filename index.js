@@ -5,6 +5,8 @@ import defaultBrowserId from 'default-browser-id';
 import bundleName from 'bundle-name';
 import windows from './windows.js';
 
+export {_windowsBrowserProgIdMap} from './windows.js';
+
 const execFileAsync = promisify(execFile);
 
 // Inlined: https://github.com/sindresorhus/titleize/blob/main/index.js

@@ -16,7 +16,7 @@ test('windows parsing', async t => {
 		},
 		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    MSEdgeDHTML\r\n\r\n',
-			expected: 'com.microsoft.edge',
+			expected: 'com.microsoft.edge.dev',
 		},
 		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    ChromeHTML\r\n\r\n',
