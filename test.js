@@ -27,6 +27,11 @@ test('windows parsing', async t => {
 			expected: 'com.microsoft.ie',
 		},
 		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    IE.HTTP.ABC123\r\n\r\n',
+			expected: 'com.microsoft.ie',
+			expectedName: 'Internet Explorer',
+		},
+		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    FirefoxURL\r\n\r\n',
 			expected: 'org.mozilla.firefox',
 		},
@@ -47,9 +52,29 @@ test('windows parsing', async t => {
 			expected: 'com.operasoftware.Opera',
 		},
 		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    ChromeHTML.777DB3UDRZLQKML3NA3UVJA65E\r\n\r\n',
+			expected: 'com.google.chrome',
+			expectedName: 'Chrome',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    FirefoxURL.ABC123\r\n\r\n',
+			expected: 'org.mozilla.firefox',
+			expectedName: 'Firefox',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    FirefoxURL-6F193CCC56814779\r\n\r\n',
+			expected: 'org.mozilla.firefox',
+			expectedName: 'Firefox',
+		},
+		{
 			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    WaterfoxHTML\r\n\r\n',
 			expected: 'WaterfoxHTML',
 			expectedName: 'WaterfoxHTML',
+		},
+		{
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    WaterfoxHTML.XYZ123\r\n\r\n',
+			expected: 'WaterfoxHTML.XYZ123',
+			expectedName: 'WaterfoxHTML.XYZ123',
 		},
 	];
 

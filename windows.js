@@ -45,5 +45,13 @@ export default async function defaultBrowser(_execFileAsync = execFileAsync) {
 
 	const {id} = match.groups;
 
-	return windowsBrowserProgIds[id] ?? {name: id, id};
+	// Windows can append a hash suffix to ProgIds using a dot or hyphen
+	// (e.g., `ChromeHTML.ABC123`, `FirefoxURL-6F193CCC56814779`).
+	// Try exact match first, then try without the suffix.
+	const dotIndex = id.lastIndexOf('.');
+	const hyphenIndex = id.lastIndexOf('-');
+	const baseIdByDot = dotIndex === -1 ? undefined : id.slice(0, dotIndex);
+	const baseIdByHyphen = hyphenIndex === -1 ? undefined : id.slice(0, hyphenIndex);
+
+	return windowsBrowserProgIds[id] ?? windowsBrowserProgIds[baseIdByDot] ?? windowsBrowserProgIds[baseIdByHyphen] ?? {name: id, id};
 }
