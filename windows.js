@@ -45,10 +45,5 @@ export default async function defaultBrowser(_execFileAsync = execFileAsync) {
 
 	const {id} = match.groups;
 
-	const browser = windowsBrowserProgIds[id];
-	if (!browser) {
-		throw new UnknownBrowserError(`Unknown browser ID: ${id}`);
-	}
-
-	return browser;
+	return windowsBrowserProgIds[id] ?? {name: id, id};
 }

@@ -43,26 +43,27 @@ test('windows parsing', async t => {
 			expected: 'com.brave.Browser.beta',
 		},
 		{
-			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    Potato\r\n\r\n',
-			expected: undefined,
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    OperaStable\r\n\r\n',
+			expected: 'com.operasoftware.Opera',
 		},
 		{
-			output:
-				'',
-			expected: undefined,
+			output: '\r\nHKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice\r\n    ProgId    REG_SZ    WaterfoxHTML\r\n\r\n',
+			expected: 'WaterfoxHTML',
+			expectedName: 'WaterfoxHTML',
 		},
 	];
 
-	await Promise.all(cases.map(async testCase => {
-		let actual;
-		try {
-			actual = await windows(async () => ({stdout: testCase.output}));
-		} catch (error) {
-			if (!(error instanceof UnknownBrowserError)) {
-				throw error;
-			}
-		}
+	await t.throwsAsync(
+		async () => windows(async () => ({stdout: ''})),
+		{instanceOf: UnknownBrowserError},
+	);
 
-		t.is(actual && actual.id, testCase.expected);
+	await Promise.all(cases.map(async testCase => {
+		const actual = await windows(async () => ({stdout: testCase.output}));
+		t.is(actual.id, testCase.expected);
+
+		if (testCase.expectedName) {
+			t.is(actual.name, testCase.expectedName);
+		}
 	}));
 });
