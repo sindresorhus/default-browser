@@ -1,3 +1,4 @@
+import process from 'node:process';
 import {promisify} from 'node:util';
 import {execFile} from 'node:child_process';
 
@@ -31,7 +32,8 @@ export const _windowsBrowserProgIdMap = new Map(Object.entries(windowsBrowserPro
 export class UnknownBrowserError extends Error {}
 
 export default async function defaultBrowser(_execFileAsync = execFileAsync) {
-	const {stdout} = await _execFileAsync('reg', [
+	const regPath = `${process.env.SYSTEMROOT ?? process.env.windir ?? 'C:\\Windows'}\\System32\\reg.exe`;
+	const {stdout} = await _execFileAsync(regPath, [
 		'QUERY',
 		' HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice',
 		'/v',
